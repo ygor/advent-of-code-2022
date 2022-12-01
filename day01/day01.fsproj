@@ -15,7 +15,7 @@
     <Content Include="input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="README.md" />
+    <Content Include="README.txt" />
   </ItemGroup>
 
 </Project>
