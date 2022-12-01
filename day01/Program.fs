@@ -3,7 +3,7 @@
 let elves =
     System.IO.File.ReadAllText("input.txt")
     |> String.split "\n\n"
-    |> List.map (String.split "\n" >> List.map int >> List.sum)
+    |> List.map (String.split "\n" >> List.sumBy int)
 
 let top3 = List.sortDescending >> List.take 3
 
