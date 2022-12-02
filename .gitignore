@@ -53,3 +53,5 @@ paket-files/
 
 .idea/
 .ionide/
+
+.DS_Store
