@@ -14,7 +14,7 @@ let scores =
 
 let play selector =
     File.ReadAllLines("input.txt")
-    |> Array.sumBy (fun round ->
+    |> Seq.sumBy (fun round ->
         Map.find round scores |> selector)
 
 printfn $"Part 1: %i{play fst}"
