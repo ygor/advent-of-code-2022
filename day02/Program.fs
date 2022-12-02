@@ -1,4 +1,5 @@
 ﻿open System.IO
+open Extensions
 
 let scores =
     [ "B X", (1 + 0, 1 + 0)
@@ -14,8 +15,7 @@ let scores =
 
 let play selector =
     File.ReadAllLines("input.txt")
-    |> Seq.sumBy (fun round ->
-        Map.find round scores |> selector)
+    |> Seq.sumBy ((><) Map.find scores >> selector)
 
 printfn $"Part 1: %i{play fst}"
 printfn $"Part 2: %i{play snd}"
