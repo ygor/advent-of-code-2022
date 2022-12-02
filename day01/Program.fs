@@ -1,7 +1,8 @@
-﻿open Extensions
+﻿open System.IO
+open Extensions
 
 let elves =
-    System.IO.File.ReadAllText("input.txt")
+    File.ReadAllText("input.txt")
     |> String.split "\n\n"
     |> List.map (String.split "\n" >> List.sumBy int)
     |> List.sortDescending
