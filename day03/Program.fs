@@ -3,13 +3,11 @@ open Extensions
 
 let rucksacks = File.ReadAllLines("input.txt")
 
-let priority itemType =
-    let value = int itemType
-    if value < 92 then value - 38 else value - 96
+let priority itemType = List.findIndex ((=) itemType) (['a' .. 'z'] @ ['A' .. 'Z']) + 1
 
 let part1 =
     rucksacks
-    |> Seq.sumBy (String.sliceHalf >> Seq.map Set.ofSeq >> Set.intersectMany >> Set.minElement >> priority)
+    |> Seq.sumBy (String.chunkInHalf >> Seq.map Set.ofSeq >> Set.intersectMany >> Set.minElement >> priority)
 
 let part2 =
     rucksacks
