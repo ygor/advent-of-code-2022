@@ -5,13 +5,13 @@ let parse retain input =
     input
     |> Seq.fold (fun crates line ->
         match line with
-        | Matches "(?>(\[.\]|\s\s\s)\s?)" items ->
+        | Regex.Matches "(?>(\[.\]|\s\s\s)\s?)" items ->
             items
             |> List.indexed
             |> List.fold (fun crates' (i, crate) ->
                 if String.trim crate = "" then crates'
                 else List.updateAt i (crates'[i] @ [crate]) crates') crates 
-        | Regex "move (\d*) from (\d*) to (\d*)" [ amount; source; dest ] ->
+        | Regex.Groups "move (\d*) from (\d*) to (\d*)" [ amount; source; dest ] ->
              let moved = List.take (int amount) crates[int source - 1] 
              crates
              |> List.updateAt (int source - 1) (List.skip (int amount) crates[int source - 1])
