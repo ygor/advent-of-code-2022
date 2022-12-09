@@ -23,8 +23,8 @@ let sizes =
     filesystem.Keys        
     |> Seq.sortByDescending List.length        
     |> Seq.fold (fun map path ->
-        if List.length path > 1 then
-            Map.add path.Tail (map.[path.Tail] + map.[path]) map
+        if List.length path > 1
+        then Map.add path.Tail (map.[path.Tail] + map.[path]) map
         else map) filesystem
     |> Map.toList
     |> List.sortBy snd
